@@ -1,0 +1,101 @@
+/*student marks and grade calculator create a web application thta takes no. of studentsas input uses a loop to enter marks calculates tool and average  display grade and pass /fail */
+
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Result Calculator</title> 
+    <script >
+        
+function calculateresult() { 
+    let n = document.getElementById("subjects").value; 
+    if (n <= 0) { 
+        alert("Please enter a valid number of subjects."); 
+        return;} 
+    let total = 0; 
+    for (let i = 0; i < n; i += 1) { 
+        let marks = parseFloat(prompt("Enter marks for subject " + (i + 1))); 
+        if (!isNaN(marks)) { 
+            total += marks;}} 
+    let avg = total / n; 
+    let grade;  
+    let result; 
+    if (avg > 90) grade = "A"; 
+    else if (avg > 80) grade = "B"; 
+    else if (avg > 70) grade = "C"; 
+    else if (avg > 60) grade = "D"; 
+    else if (avg > 50) grade = "E"; 
+    else grade = "F"; 
+    result = (avg > 40) ? "PASS" : "FAIL"; 
+    document.getElementById("result").innerHTML = ` 
+        <div class="result"> 
+            <p>Total Marks: ${total}</p> 
+            <p>Average Marks: ${avg.toFixed(2)}</p> 
+            <p>Grade: ${grade}</p> 
+            <p>Final Result: ${result}</p> 
+        </div> `;}
+    
+    </script> 
+   <style>
+    * { 
+    margin: 0; 
+    padding: 0;} 
+body { 
+    background-color: #FFF8F0;} 
+.backdrop { 
+    width: 800px; 
+    border: 1px solid #81A6C6; 
+    box-shadow: 0 0 15px #AACDDC; 
+    border-radius: 10px; 
+    background-color: white; 
+    align-self: center; 
+    justify-self: center; 
+    margin-top: 10%; 
+    width: 500px; 
+    height: auto; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;} 
+h2 { 
+    font-size: 40px; 
+    margin-top: 20px; 
+    margin-bottom: 10px; 
+    color: #9a4949;} 
+label { 
+    color: #9d2d2d; 
+    font-size: 20px; 
+    margin-top: 15px; 
+    margin-bottom: 3px;} 
+button { 
+    margin: 10px; 
+    height: 30px; 
+    width: 120px; 
+    background-color: #AACDDC; 
+    color: white; 
+    border-radius: 5px; 
+    border: 0; 
+    margin-bottom: 20px;} 
+.result { 
+    padding: 15px; 
+    border-radius: 8px; 
+    width: 100%;} 
+.result p { 
+    margin: 5px 0; 
+    font-family: sans-serif; 
+    color: rgb(35, 96, 24)
+
+
+   </style> 
+</head> 
+<body> 
+    <div class="backdrop"> 
+        <h2>Student Result Calculator</h2> 
+        <label>Enter number of subjects</label><br> 
+        <input type="number" id="subjects"> 
+        <button onclick="calculateresult()">Calculate Result</button> 
+        <div id="result"></div> 
+    </div> 
+</body> 
+</html> 
+ 
